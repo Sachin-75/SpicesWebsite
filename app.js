@@ -7,64 +7,10 @@ const hbs = require("hbs");
 // const mongoose = require("./db/conn.js");
 const mongoose = require("mongoose");
 
-const DB = 'mongodb+srv://Sachin-75:sachin750@cluster0.kdb6soc.mongodb.net/Spicesproject?retryWrites=true&w=majority'
-// const DB = 'mongodb://localhost:27017/SpicesRegistration'
+const DB = 'mongodb://localhost:27017/SpicesRegistration'
 mongoose.connect(DB).then(() => {
     console.log(`connection successfully`);
 }).catch((err) => console.log(`no connection`));
-
-//mongodb+srv://Sachin-75:sachin750@cluster0.kdb6soc.mongodb.net/Spicesproject?retryWrites=true&w=majority
-// mongoose.connect("mongodb://localhost:27017/SpicesRegistration", {
-//     // useNewUrlParser:true,
-//     // useUnifiedTopology:true,
-//     // useCreateIndex:true
-// }).then(() => {
-//     console.log(`connection successful`);
-// }).catch((e) => {
-//     console.log(`no connection`);
-// })
-
-// End of database connection
-
-
-
-
-// Connection With Register
-
-// const employeeSchema = new mongoose.Schema({
-//     name : {
-//         type:String,
-//         required:true
-//     },
-//     phone : {
-//         type:Number,
-//         required:true,
-//         unique:true
-//     },
-//     email : {
-//         type:String,
-//         required:true,
-//         unique:true
-//     },
-//     password : {
-//         type:String,
-//         required:true
-//     },
-//     confirmpassword : {
-//         type:String,
-//         required:true
-//     },
-//     selection : {
-//         type:String,
-//         required:true
-//     }
-// })
-
-// const Register = new mongoose.model("Registers", employeeSchema)
-
-// module.exports = Register;
-
-// End of connection with Register
 
 
 const Register = require("./models/registers");
@@ -76,13 +22,10 @@ const { Connection } = require("mongoose");
 const port = process.env.PORT || 3000;
 
 const static_path = path.join(__dirname, "../public");
-// const template_path = path.join(__dirname, "../templates/views");
-// const partials_path = path.join(__dirname, "../templates/partials");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use(express.static(static_path));
 app.set("view engine", "hbs");
 app.use(express.static(__dirname + '/public'));
 // app.set("views", template_path);
@@ -112,31 +55,6 @@ app.get("/", (req, res) => {
 app.get("/sign", (req, res) => {
     res.render("./sign.hbs");
 });
-
-// app.post("/register", async (req, res) => {
-//     try {
-//         const password = req.body.password;
-//         const cpassword = req.body.confirmpassword;
-
-//         if(password === cpassword){
-//             const registerEmployee = new Register({
-//                 name : req.body.name,
-//                 phone : req.body.phone,
-//                 email : req.body.email,
-//                 password : req.body.password,
-//                 confirmpassword : req.body.confirmpassword
-//             })
-
-//             const registered = await registerEmployee.save();
-//             res.status(201).render("login");
-//         }else{
-//             res.send("password are not matching");
-//         }
-
-//     } catch(error) {
-//         res.status(400).send(error);
-//     }
-// });
 
 app.post("/sign", async (req, res) => {
     try {
@@ -169,24 +87,6 @@ app.get("/login", (req, res) => {
     res.render("login");
 });
 
-// app.post("/login", async (req, res) => {
-//     try {
-//         const email = req.body.email;
-//         const password = req.body.password;
-
-//         const useremail = await Register.findOne({email:email});
-//         //res.send(useremail.password);
-//         //console.log(useremail);
-//         if(useremail.password === password){
-//             res.status(201).render("index");
-//         }else{
-//             res.send("password are not matching");
-//         }
-
-//     } catch (error) {
-//         res.status(400).send("Invalid Email");
-//     }
-// });
 
 
 app.post("/login", async (req, res) => {
