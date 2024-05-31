@@ -7,8 +7,8 @@ const hbs = require("hbs");
 // const mongoose = require("./db/conn.js");
 const mongoose = require("mongoose");
 
-const DB = 'mongodb+srv://Sachin-75:sachin750@cluster0.kdb6soc.mongodb.net/Spicesproject?retryWrites=true&w=majority'
-// const DB = 'mongodb://localhost:27017/SpicesRegistration'
+// const DB = 'mongodb+srv://Sachin-75:sachin750@cluster0.kdb6soc.mongodb.net/Spicesproject?retryWrites=true&w=majority'
+const DB = 'mongodb://localhost:27017/SpicesRegistration'
 mongoose.connect(DB).then(() => {
     console.log(`connection successfully`);
 }).catch((err) => console.log(`no connection`));
