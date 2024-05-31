@@ -7,9 +7,6 @@ Welcome to the Shagun Spices project repository! This project is a responsive we
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
